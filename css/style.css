@@ -1,0 +1,108 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.screen-organizer {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    padding: 20px;
+    background-color: #2196F3;
+    border-radius: 10px;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+.cell {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+h1, .display-Player-name {
+    color: #032f6a;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.display-Player-name {
+    color: #032f6a;
+}
+
+#message {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    height: 2rem;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: row;
+}
+
+.player-inputs {
+    display: flex;
+    align-items: center;
+    margin: 16px;
+}
+
+.score {
+    font-size: 1.1rem;
+    margin-top: 5px;
+}
+
+.player-one .score {
+    color: #1a73e8;
+}
+
+.player-two .score {
+    color: #e82b1a;
+}
+
+button, input {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+input {
+    background-color:#fff9f9;
+    color: black;
+    cursor: text;
+}
+
+button:hover {
+    background-color: #032f6a;
+}
