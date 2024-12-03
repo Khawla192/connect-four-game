@@ -1,108 +1,251 @@
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #2196f3;
+    --primary-dark: #1976d2;
+    --secondary: #f50057;
+    --background: #f5f5f5;
+    --surface: transparent;
+    --text: #333333;
+    --shadow: none;
+    --radius: 12px;
+    --transition: all 0.3s ease;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100dvh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    min-height: 100vh;
-    background-color: #f0f0f0;
+    padding: 2rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.rules {
+    margin: 1rem 0 2rem;
+    max-width: 600px;
+    width: 90%;
+}
+
+.rules h3 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary);
+}
+
+.rules ul {
+    list-style: none;
+}
+
+.rules li {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.rules li:before {
+    content: "•";
+    color: var(--primary);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
 }
 
 .screen-organizer {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 600px;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    flex-direction: column;
+.settings-form {
+    padding: 2rem;
 }
 
-#board {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
-    padding: 20px;
-    background-color: #2196F3;
-    border-radius: 10px;
-    margin: 0 auto;
-    width: fit-content;
+.setting-group {
+    margin-bottom: 1.5rem;
+}
+
+.setting-group h3 {
+    color: var(--text);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.setting-group select,
+.setting-group input[type="text"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+
+.setting-group select:focus,
+.setting-group input[type="text"]:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+.start-button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.start-button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+#game-board {
+    display: none;
+    gap: 8px;
+    padding: 1.5rem;
+    margin: 2rem auto;
 }
 
 .cell {
-    width: 60px;
-    height: 60px;
-    background-color: white;
+    width: 50px;
+    height: 50px;
+    background: var(--surface);
     border-radius: 50%;
     cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid var(--primary);
 }
 
-h1, .display-Player-name {
-    color: #032f6a;
-    margin-bottom: 1rem;
-    font-size: 2.5rem;
+.cell:hover {
+    transform: scale(1.05);
 }
 
-.display-Player-name {
-    color: #032f6a;
+.cell.red {
+    background: #e74c3c;
 }
 
-#message {
-    margin-bottom: 2rem;
-    font-size: 1.5rem;
-    height: 2rem;
+.cell.yellow {
+    background: #f1c40f;
 }
 
-.game-container {
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    flex-direction: row;
+#game-info {
+    text-align: center;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
 }
 
-.player-inputs {
-    display: flex;
-    align-items: center;
-    margin: 16px;
+#turn-info {
+    font-size: 1.4rem;
 }
 
-.score {
-    font-size: 1.1rem;
-    margin-top: 5px;
+#timer-info {
+    font-size: 1.2rem;
+    color: var(--secondary);
 }
 
-.player-one .score {
-    color: #1a73e8;
+.red-text {
+    color: #e74c3c;
+    font-weight: bold;
 }
 
-.player-two .score {
-    color: #e82b1a;
+.yellow-text {
+    color: #f1c40f;
+    font-weight: bold;
 }
 
-button, input {
-    background-color: #1a73e8;
-    color: white;
-    border: none;
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
-    border-radius: 25px;
-    cursor: pointer;
+.winning-message {
+    font-size: 2rem;
+    margin: 1.5rem 0;
+    animation: fadeIn 0.5s ease-out;
 }
 
-input {
-    background-color:#fff9f9;
-    color: black;
-    cursor: text;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-button:hover {
-    background-color: #032f6a;
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .rules {
+        padding: 1.5rem;
+    }
+
+    .settings-form {
+        padding: 1.5rem;
+    }
+
+    .cell {
+        width: 40px;
+        height: 40px;
+    }
+
+    #game-info {
+        padding: 1rem;
+    }
+
+    #turn-info {
+        font-size: 1.2rem;
+    }
+
+    #timer-info {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cell {
+        width: 35px;
+        height: 35px;
+    }
+
+    .rules {
+        padding: 1rem;
+    }
+
+    .settings-form {
+        padding: 1rem;
+    }
+
+    input, select, .start-button {
+        padding: 8px 16px;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
 }
