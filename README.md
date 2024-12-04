@@ -1,4 +1,4 @@
- # Connect 4 Game
+# Connect 4 Game
 
 A modern, web-based implementation of the classic Connect Four game with additional game modes and features. Play Connect-4, Connect-5, or Connect-6 with customizable settings!
 
@@ -11,7 +11,7 @@ A modern, web-based implementation of the classic Connect Four game with additio
 
 ### Play the Game
 
-[Deployed Game Link](https://nayaba.github.io/spaceman/)
+[Deployed Game Link](https://khawla192.github.io/connect-four-game/)
 
 ## 🎯 Game Modes
 
