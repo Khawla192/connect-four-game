@@ -84,9 +84,20 @@ Choose from multiple grid sizes:
 
 ## Attributions
 
--   [Astronaut Image](https://www.vecteezy.com/vector-art/5429564-astronaut-spaceman-flying-hovering-black-and-white-hand-drawn-vector-illustration)
--   [Roboto Font](https://fonts.google.com/specimen/Roboto)
--   [Sound Effects](https://www.zapsplat.com/music/astronaut-breathing-in-helmet-space-mask-calm-could-be-scuba-diver/)
+### Design Guidelines
+- Color contrast ratios follow [WCAG 2.0 level AA standards](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)
+
+### Fonts
+- Primary Font: Segoe UI (System Font)
+- Fallback Fonts: system-ui, -apple-system, sans-serif
+
+### Color Palette
+- Primary Blue: #1976D2
+- Dark Blue: #0D47A1
+- Secondary Red: #D32F2F
+- Background: #FFFFFF;
+- Surface: #F5F5F5
+- Text: #212121
 
 ----------
 

@@ -23,6 +23,11 @@ const gameSettingsForm = document.getElementById('gameSettings')
 const screenOrganizer = document.querySelector('.screen-organizer')
 
 /*-------------- Functions -------------*/
+function render() {
+    updateTurnInfo()
+    startTurnTimer()
+}
+
 function initializeGame() {
     playerNames[0] = player1Input.value || 'Player 1'
     playerNames[1] = player2Input.value || 'Player 2'
@@ -35,6 +40,8 @@ function initializeGame() {
     createBoard(rows, cols)
     startTurnTimer()
     updateTurnInfo()
+    currentPlayer = 0
+    render()
 }
 
 function createBoard(rows, cols) {
@@ -68,6 +75,7 @@ function handleCellClick(event) {
         currentPlayer = 1 - currentPlayer
         updateTurnInfo()
         startTurnTimer()
+        render()
     }
 }
 
@@ -91,8 +99,8 @@ function checkWin(row, col) {
     for (let { r, c } of directions) {
         let count = 1
         for (let sign of [-1, 1]) {
-            let newRow = row + sign * c
-            let newCol = col + sign * r
+            let newRow = row + sign * r
+            let newCol = col + sign * c
             while (
                 newRow >= 0 && 
                 newRow < board.length && 
@@ -101,8 +109,8 @@ function checkWin(row, col) {
                 board[newRow][newCol] === currentPlayer
             ) {
                 count++
-                newRow += sign * c
-                newCol += sign * r
+                newRow += sign * r
+                newCol += sign * c
             }
         }
         if (count >= connectSize) return true
@@ -159,6 +167,7 @@ function startTurnTimer() {
             currentPlayer = 1 - currentPlayer
             updateTurnInfo()
             startTurnTimer()
+            render()
         }
     }, 1000)
 }
